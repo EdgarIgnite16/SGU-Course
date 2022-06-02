@@ -1,0 +1,7 @@
+31191 NguyenVanA vào 9:00
+31192 NguyenVanB vào 9:10
+31193 NguyenVanC vào 10:10
+31191 NguyenVanA ra 10:50
+31194 NguyenVanD vào 11:00
+31191 NguyenVanA vào 11:20
+31193 NguyenVanC ra 11:30
