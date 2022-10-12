@@ -1,4 +1,4 @@
-package Cores;
+package Objs;
 
 public class TableKeys {
     private String Xi;
@@ -7,12 +7,15 @@ public class TableKeys {
     private String SuperKey;
     private String Key;
 
+    public TableKeys() {
+    }
+
     public TableKeys(String xi, String tnUXi, String tnUXiPlus, String superKey, String key) {
-        Xi = xi;
-        TnUXi = tnUXi;
-        TnUXiPlus = tnUXiPlus;
-        SuperKey = superKey;
-        Key = key;
+        this.Xi = xi;
+        this.TnUXi = tnUXi;
+        this.TnUXiPlus = tnUXiPlus;
+        this.SuperKey = superKey;
+        this.Key = key;
     }
 
     public String getXi() {

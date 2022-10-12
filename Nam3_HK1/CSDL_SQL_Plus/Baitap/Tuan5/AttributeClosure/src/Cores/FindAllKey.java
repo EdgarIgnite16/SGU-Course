@@ -1,5 +1,7 @@
 package Cores;
 
+import Objs.FD;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
@@ -9,7 +11,17 @@ public class FindAllKey {
     // Xác định TN(Tập nguồn) và TG(Trung Gian)
     // TN là bao gồm các chữ chỉ xuất hiện ở vế trái
     // TG là bao gồm các chữ xuất hiện bên cả 2 vế
-    // TN = {H} || TG = {A, B, C, E, G, I}
+    /*
+        ABCDEGHI
+        AC B
+        BI ACD
+        ABC D
+        H I
+        ACE BCG
+        CG AE
+
+        TN = {H} || TG = {A, B, C, E, G, I}
+    */
 
     private String filePath;
     private HashSet<Character> R = new HashSet<>(); // là tập hợp các chữ trong tập hợp hàm
@@ -55,23 +67,65 @@ public class FindAllKey {
         in.close(); // Đóng file
     }
 
-    // Lớp chứa các phụ thuộc hàm
-    public class FD{
-        HashSet<Character> lhs;
-        HashSet<Character> rhs;
-
-        public FD(HashSet<Character> l, HashSet<Character> r){
-            this.lhs = l;
-            this.rhs = r;
-        }
-    };
-
     //Hàm xác định tập nguồn và tập giao
     public void Determine_TN_TG() {
-        F.forEach(fd -> {
-            fd.lhs.forEach(fdLHS -> {
-
+        // Tìm tập giao TG
+        R.forEach(CharR -> {
+            F.forEach(fd1 -> {
+                boolean checkLeft = fd1.lhs.contains(CharR);
+                if(checkLeft) {
+                    F.forEach(fd2 -> {
+                        boolean checkRight = fd2.rhs.contains(CharR);
+                        /*
+                        System.out.print(CharR + " ");
+                        System.out.print(fd1.lhs + "->" + fd2.rhs);
+                        System.out.print(" " + checkLeft + " " + checkRight);
+                        System.out.println();
+                        */
+                        if(checkRight) {
+                                TG.add(CharR);
+                        }
+                    });
+                }
             });
         });
+
+        // Tìm tập nguồn TN
+        R.forEach(CharR -> {
+            F.forEach(fd1 -> {
+                boolean checkLeft = fd1.lhs.contains(CharR);
+                if(checkLeft) {
+                    F.forEach(fd2 -> {
+                        boolean checkRight = fd2.rhs.contains(CharR);
+                        /*
+                        System.out.print(CharR + " ");
+                        System.out.print(fd1.lhs + "->" + fd2.rhs);
+                        System.out.print(" " + checkLeft + " " + checkRight);
+                        System.out.println();
+                        */
+                        if(!checkRight) {
+                            // Kiểm tra Char đang xét có nằm trong TG
+                            if(!TG.contains(CharR)) {
+                                TN.add(CharR);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        System.out.println("Tap Nguon (TN): " + TN);
+        System.out.println("Tap Giao (TG): " + TG);
+    }
+
+    // Lập ma trận bảng
+    public void MatrixTable() {
+        HashSet<Character> Xi = new HashSet<>();
+        HashSet<Character> TnUXi = new HashSet<>();
+        HashSet<Character> tnUXiPlus = new HashSet<>();
+        HashSet<Character> superKey = new HashSet<>();
+        HashSet<Character> key = new HashSet<>();
+
+
     }
 }

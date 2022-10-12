@@ -59,6 +59,7 @@ public class EntryMain {
                     System.out.println("Ban da chon Tim tat ca khoa");
                     FindAllKey findAllKey = new FindAllKey(filePath);
                     findAllKey.Determine_TN_TG();
+                    findAllKey.MatrixTable();
                     break;
 
                 case 0:
