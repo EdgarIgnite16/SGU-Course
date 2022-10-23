@@ -1,0 +1,25 @@
+Quân Huỳnh
+- Đăng Kí
+- Tạo tài khoản nhân viên
+- Đăng nhập (Khách hàng)
+- Đăng nhập Quản trị
+- Quên mật khẩu (Khách hàng)
+Nguyên Lộc
+- Đặt hàng
+- Cập Nhật Giỏ Hàng
+- Xem Danh Sách Sản Phẩm
+- Xem Chi Tiết Sản Phẩm
+- Xem Lịch Sử Mua Hàng
+- Xem Lịch Sử Nhập Hàng 
+Minh Tấn
+- Thanh Toán
+- Quản lí Hoá Đơn Thanh Toán
+- Nhập hàng
+- Quản lí Nhà Cung Ứng
+- Quản lí Sản Phẩm
+Linh Quân
+- Báo Cáo Doanh Thu Cửa Hàng
+- Thống Kê Mua Sắm
+
+UsecaseNumber: UC_<Usecase>
+File FU: FU_<Usecase>

@@ -1,5 +1,6 @@
 package Cores;
 
+import Objs.BucketKey;
 import Objs.FD;
 
 import java.io.File;
@@ -28,6 +29,7 @@ public class FindAllKey {
     private HashSet<FD> F = new HashSet<FD>();  // Class chứa các phụ thuộc hàm
     private HashSet<Character> TN = new HashSet<>();
     private HashSet<Character> TG = new HashSet<>();
+    HashSet<BucketKey> bucketKeys = new HashSet<>(); // Chứa các khoá tìm được
 
     public FindAllKey(String filename) {
         Scanner in = null;
@@ -119,13 +121,46 @@ public class FindAllKey {
     }
 
     // Lập ma trận bảng
-    public void MatrixTable() {
-        HashSet<Character> Xi = new HashSet<>();
-        HashSet<Character> TnUXi = new HashSet<>();
-        HashSet<Character> tnUXiPlus = new HashSet<>();
-        HashSet<Character> superKey = new HashSet<>();
-        HashSet<Character> key = new HashSet<>();
+    public void MainProgress() {
+        HashSet<Character> TN_Clone = new HashSet<>(TN);
+        HashSet<Character> TG_Clone = new HashSet<>(TG);
+
+        // Kết kí tự và lưu trữ
+        for(Character tn : TN_Clone) {
+            for(Character tg1 : TG_Clone) {
+                for(Character tg2 : TG_Clone) {
+                    // Tạo 1 clone lưu lại
+                    HashSet<Character> temp = new HashSet<>();
+                    temp.add(tn); temp.add(tg1); temp.add(tg2);
+
+                    if(temp.size() == 3) {
+                        // Tìm bao đóng
+                        ClosureAttribute db5 = new ClosureAttribute(filePath);
+                        if(db5.closure(temp).containsAll(R)) {
+                            BucketKey bucketKey = new BucketKey(temp);
+                            if (!checkConstain(temp)) {
+                                bucketKeys.add(bucketKey);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.print("Cac khoa tim duoc la:  ");
+        for(BucketKey i : bucketKeys) {
+            System.out.print(i.bucket + "  ");
+        }
+    }
 
 
+    public boolean checkConstain(HashSet<Character> item) {
+        boolean check = false;
+        for (BucketKey bucketKey : bucketKeys) {
+            if(bucketKey.bucket.containsAll(item)) {
+                check = true;
+            }
+        }
+        return check;
     }
 }
