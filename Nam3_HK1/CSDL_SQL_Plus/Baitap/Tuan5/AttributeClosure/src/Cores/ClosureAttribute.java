@@ -31,8 +31,8 @@ public class ClosureAttribute {
         }
 
         while (in.hasNextLine()){
-            // Tách chữ đầu tiên ra làm 2
-            String[] terms = in.nextLine().split(" ");
+            // Tách chữ đầu tiên ra làm 2 theo prefix "->"
+            String[] terms = in.nextLine().split("->");
             HashSet<Character> l = new HashSet<Character>();
             HashSet<Character> r = new HashSet<Character>();
 
