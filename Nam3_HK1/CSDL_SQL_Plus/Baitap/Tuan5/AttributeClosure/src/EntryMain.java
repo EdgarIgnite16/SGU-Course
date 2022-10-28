@@ -56,7 +56,7 @@ public class EntryMain {
                     break;
 
                 case 3:
-                    System.out.println("Ban da chon Tim tat ca khoa");
+                    System.out.println("Ban da chon Tim tat ca khoa (Su dung cach tim tat ca khoa nang cao)");
                     FindAllKey findAllKey = new FindAllKey(filePath);
                     findAllKey.Determine_TN_TG();
                     findAllKey.MainProgress();

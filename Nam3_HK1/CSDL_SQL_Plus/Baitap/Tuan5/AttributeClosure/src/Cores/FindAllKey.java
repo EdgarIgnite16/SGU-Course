@@ -125,6 +125,8 @@ public class FindAllKey {
         HashSet<Character> TN_Clone = new HashSet<>(TN);
         HashSet<Character> TG_Clone = new HashSet<>(TG);
 
+        System.out.println("Cac thuc hien gom: Tim TN-TG -> Gop TN-TG thanh 3 chu cai -> Tim bao dong -> Ra ket qua");
+        System.out.println("Tim tap hop bao dong: ");
         // Kết kí tự và lưu trữ
         for(Character tn : TN_Clone) {
             for(Character tg1 : TG_Clone) {
@@ -133,12 +135,14 @@ public class FindAllKey {
                     HashSet<Character> temp = new HashSet<>();
                     temp.add(tn); temp.add(tg1); temp.add(tg2);
 
+                    // Chỉ lấy những tổ hợp chữ cái 3 từ
                     if(temp.size() == 3) {
                         // Tìm bao đóng
                         ClosureAttribute db5 = new ClosureAttribute(filePath);
+                        System.out.println(temp + "+: " + db5.closure(temp));
                         if(db5.closure(temp).containsAll(R)) {
                             BucketKey bucketKey = new BucketKey(temp);
-                            if (!checkConstain(temp)) {
+                            if (!checkConstainBucket(temp)) {
                                 bucketKeys.add(bucketKey);
                             }
                         }
@@ -147,6 +151,7 @@ public class FindAllKey {
             }
         }
 
+        System.out.println("Bao dong nao giong Tap hop ham ban dau nhat thi no chinh la khoa!");
         System.out.print("Cac khoa tim duoc la:  ");
         for(BucketKey i : bucketKeys) {
             System.out.print(i.bucket + "  ");
@@ -154,7 +159,7 @@ public class FindAllKey {
     }
 
 
-    public boolean checkConstain(HashSet<Character> item) {
+    public boolean checkConstainBucket(HashSet<Character> item) {
         boolean check = false;
         for (BucketKey bucketKey : bucketKeys) {
             if(bucketKey.bucket.containsAll(item)) {
