@@ -8,6 +8,4 @@ public class BucketKey {
     public BucketKey(HashSet<Character> bucket){
         this.bucket = bucket;
     }
-
-
 }

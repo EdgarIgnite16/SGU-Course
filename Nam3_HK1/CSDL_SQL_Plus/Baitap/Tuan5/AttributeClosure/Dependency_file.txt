@@ -1,7 +1,5 @@
-ABCDEGHI
-AC->B
-BI->ACD
-ABC->D
-H->I
-ACE->BCG
-CG->AE
+ABCDE
+A->BC
+CD->E
+B->D
+E->A

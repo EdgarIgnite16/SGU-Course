@@ -127,28 +127,76 @@ public class FindAllKey {
 
         System.out.println("Cac thuc hien gom: Tim TN-TG -> Gop TN-TG thanh 3 chu cai -> Tim bao dong -> Ra ket qua");
         System.out.println("Tim tap hop bao dong: ");
-        // Kết kí tự và lưu trữ
-        for(Character tn : TN_Clone) {
+
+        // Xét tìm khoá nâng cao với điều kiện có tập nguồn
+        if(TN.size() != 0) {
+            // Kết kí tự và lưu trữ có các tập hợp 3 chữ
+            for(Character tn : TN_Clone) {
+                for(Character tg1 : TG_Clone) {
+                    for(Character tg2 : TG_Clone) {
+                        // Tạo 1 clone lưu lại
+                        HashSet<Character> temp = new HashSet<>();
+                        temp.add(tn); temp.add(tg1); temp.add(tg2);
+
+                        // Chỉ lấy những tổ hợp chữ cái 3 từ
+                        if(temp.size() == 3) {
+                            // Tìm bao đóng
+                            ClosureAttribute db5 = new ClosureAttribute(filePath);
+                            System.out.println(temp + "+: " + db5.closure(temp));
+                            if(db5.closure(temp).containsAll(R)) {
+                                if (!checkConstainBucket(temp)) {
+                                    BucketKey bucketKey = new BucketKey(temp);
+                                    bucketKeys.add(bucketKey);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else { // Trường hợp tìm kiếm bình thường
+
+            // Trường hợp 1 chữ
+            for(Character tg : TG_Clone) {
+                // Tạo 1 clone lưu lại
+                HashSet<Character> temp = new HashSet<>();
+                temp.add(tg);
+
+                // Tìm bao đóng
+                ClosureAttribute db5 = new ClosureAttribute(filePath);
+                System.out.println(temp + "+: " + db5.closure(temp));
+                if(db5.closure(temp).containsAll(R)) {
+                    if (!checkConstainBucket(temp)) {
+                        BucketKey bucketKey = new BucketKey(temp);
+                        bucketKeys.add(bucketKey);
+                    }
+                }
+            }
+
+            // Lưu lại các khoá 1 chữ tìm được
+            HashSet<BucketKey> bucketKeyTemp = bucketKeys;
+
+            // Trường hợp 2 chữ
             for(Character tg1 : TG_Clone) {
                 for(Character tg2 : TG_Clone) {
                     // Tạo 1 clone lưu lại
                     HashSet<Character> temp = new HashSet<>();
-                    temp.add(tn); temp.add(tg1); temp.add(tg2);
+                    temp.add(tg1); temp.add(tg2);
 
-                    // Chỉ lấy những tổ hợp chữ cái 3 từ
-                    if(temp.size() == 3) {
+                    // Chỉ lấy những tổ hợp chữ cái 2 từ
+                    if(temp.size() == 2) {
                         // Tìm bao đóng
                         ClosureAttribute db5 = new ClosureAttribute(filePath);
                         System.out.println(temp + "+: " + db5.closure(temp));
                         if(db5.closure(temp).containsAll(R)) {
-                            BucketKey bucketKey = new BucketKey(temp);
-                            if (!checkConstainBucket(temp)) {
+                            if (!checkConstainBucket(temp) && !checkMinimal(bucketKeyTemp, temp)) {
+                                BucketKey bucketKey = new BucketKey(temp);
                                 bucketKeys.add(bucketKey);
                             }
                         }
                     }
                 }
             }
+
         }
 
         System.out.println("Bao dong nao giong Tap hop ham ban dau nhat thi no chinh la khoa!");
@@ -158,6 +206,19 @@ public class FindAllKey {
         }
     }
 
+    private boolean checkMinimal(HashSet<BucketKey> bucketKeyTemp, HashSet<Character> temp) {
+        boolean check = true;
+        for(BucketKey bucketKey : bucketKeyTemp) {
+            for(Character character : temp) {
+                System.out.println(bucketKey.bucket.contains(character));
+/*                if(bucketKey.bucket.contains(character)) {
+                    check = false;
+                    break;
+                }*/
+            }
+        }
+        return check;
+    }
 
     public boolean checkConstainBucket(HashSet<Character> item) {
         boolean check = false;

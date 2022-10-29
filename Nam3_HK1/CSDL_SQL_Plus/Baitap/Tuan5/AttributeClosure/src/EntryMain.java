@@ -50,7 +50,6 @@ public class EntryMain {
 
                 case 2:
                     System.out.println("Ban da chon Tim khoa");
-                    System.out.print("Khoa cua tap hop la: ");
                     FindKey obj = new FindKey(filePath);
                     obj.printSet(obj.SplitAndFindKey());
                     break;
