@@ -1,5 +1,5 @@
-ABCDE
-A->BC
-CD->E
-B->D
-E->A
+ABCDEF
+ABC->DE
+AB->D
+DE->ABCF
+E->C
