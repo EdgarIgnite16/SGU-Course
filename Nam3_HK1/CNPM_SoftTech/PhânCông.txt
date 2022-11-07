@@ -22,5 +22,5 @@ Linh Quân
 - Liên hệ quản trị
 
 UsecaseNumber: UC_<Usecase>
-File FU: FU_<Usecase>
-Deadline tuần này xong ít nhất 60% tổng cv
+File FocusedUsecase: FU_<Usecase>
+File Sequence Diagram: SD_<Usecase>
