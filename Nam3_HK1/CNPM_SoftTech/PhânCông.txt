@@ -16,7 +16,7 @@ Minh Tấn
 - Xử lí hoá đơn
 - Gửi & in hoá đơn
 Linh Quân
-- Thống kê
+- Thống kê mua bán
 - Đổi thông tin cá nhân
 - Đổi mật khẩu
 - Liên hệ quản trị
