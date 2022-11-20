@@ -24,3 +24,13 @@ Linh Quân
 UsecaseNumber: UC_<Usecase>
 File FocusedUsecase: FU_<Usecase>
 File Sequence Diagram: SD_<Usecase>
+
+---------------------------
+20/11/2022 - Update công việc cần làm:
+- Chỉnh sửa lại toàn bộ SD (Chi tiết sửa như nào thì trong buổi hợp sẽ nói)
+- Sau khi chỉnh sửa lại xong SD thì tiếp tục chỉnh sửa tiếp SơĐồClass
+- Sau khi chỉnh sửa xong hết SD và SơĐồClass thì sẽ update file báo cáo tổng, Ae toàn thể nhớ check lại lỗi
+- Trong thời gian chỉnh sửa SD và SơĐồClass t sẽ ngồi làm cái pp để thuyết trình chủ yếu là phần:
+	+ Mô tả phần mềm, đối tượng, chức năng phục vụ nghiệp vụ gì
+	+ Trình bày khoảng 3-4 chức năng đặc trưng (2 khách hàng, 2 quản trị) chỉ phần FU
+- Sau khi bây xong hết phần chỉnh sửa trên thì t sẽ hoàn thiện nốt phần còn lại
