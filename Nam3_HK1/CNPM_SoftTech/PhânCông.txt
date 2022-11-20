@@ -6,8 +6,7 @@ Nguyên Lộc
 Quân Huỳnh
 - Đăng kí
 - Quên mật khẩu
-- Quản lí tài khoản quản trị
-- Quản lí tài khoản khách hàng
+- Quản lí khách hàng
 - Quản lí sản phẩm
 Minh Tấn
 - Quản lí phương thức thanh toán
