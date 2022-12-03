@@ -1,3 +1,7 @@
+import Feature.ClusteringIndex;
+import Feature.PrimaryIndex;
+import Feature.SecondaryIndex;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,18 +37,18 @@ public class Main {
             // Xử lí
             switch (select) {
                 case 1:
-                    System.out.println("Ban da chon Tim bao dong");
-
+                    System.out.println("Ban da chon Primary Index!");
+                    new PrimaryIndex().mainProgress();
                     break;
 
                 case 2:
-                    System.out.println("Ban da chon Tim khoa");
-
+                    System.out.println("Ban da chon CLustering Index!");
+                    new ClusteringIndex().mainProgress();
                     break;
 
                 case 3:
-                    System.out.println("Ban da chon Tim tat ca khoa (Su dung cach tim tat ca khoa nang cao)");
-
+                    System.out.println("Ban da chon Secondary Index!");
+                    new SecondaryIndex().mainProgress();
                     break;
 
                 case 0:
