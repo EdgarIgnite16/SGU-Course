@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 // nondense
 public class PrimaryIndex {
-    private int record, blockSize, recordSize, Vssn, blockPointer;
-
-    public PrimaryIndex() {
-    }
+    private int record, blockSize, recordSize, Vssn, blockPointer; // input value
+    private float bfr, b, Ri, bfri, ri, bi, binaraySearchDataFile, binarySearchIndexFile, linearSearchDataFile; // output value
 
     public PrimaryIndex(int record, int blockSize, int recordSize, int vssn, int blockPointer) {
         this.record = record;
@@ -19,16 +17,16 @@ public class PrimaryIndex {
 
     // main progress
     public void mainProgress() {
-        this.inputData(); // 1
-
     }
 
-    // input
-    private void inputData() {
-        System.out.print("Record Size (R): "); recordSize = new Scanner(System.in).nextInt();
-        System.out.print("Block Size (B): "); blockSize = new Scanner(System.in).nextInt();
-        System.out.print("Block Pointer (P): "); blockPointer = new Scanner(System.in).nextInt();
-        System.out.print("SSN Field (Vssn): "); Vssn = new Scanner(System.in).nextInt();
-        System.out.print("Number of Record (r): "); record = new Scanner(System.in).nextInt();
+    @Override
+    public String toString() {
+        return "PrimaryIndex{" +
+                "record=" + record +
+                ", blockSize=" + blockSize +
+                ", recordSize=" + recordSize +
+                ", Vssn=" + Vssn +
+                ", blockPointer=" + blockPointer +
+                '}';
     }
 }

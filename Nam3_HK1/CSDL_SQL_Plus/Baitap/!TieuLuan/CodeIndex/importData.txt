@@ -1,0 +1,6 @@
+Record_Size_(R):40
+Block_Size_(B):4096
+Block_Pointer_(P):6
+SSN_Field_(Vssn):9
+Number_of_Record (r):600000
+Zipcode:500

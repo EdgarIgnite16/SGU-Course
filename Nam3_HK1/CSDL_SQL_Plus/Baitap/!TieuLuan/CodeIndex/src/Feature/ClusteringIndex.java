@@ -5,6 +5,7 @@ import java.util.Scanner;
 // nondense
 public class ClusteringIndex {
     private int record, blockSize, recordSize, Vssn, blockPointer, zipCode;
+    private float bfr, b, Ri, bfri, ri, bi, binaraySearchDataFile, binarySearchIndexFile, linearSearchDataFile; // output value
 
     public ClusteringIndex() {
     }
@@ -20,17 +21,18 @@ public class ClusteringIndex {
 
     // main progress
     public void mainProgress() {
-        this.inputData(); // 1
-
     }
 
-    // input
-    private void inputData() {
-        System.out.print("Record Size (R): "); recordSize = new Scanner(System.in).nextInt();
-        System.out.print("Block Size (B): "); blockSize = new Scanner(System.in).nextInt();
-        System.out.print("Block Pointer (P): "); blockPointer = new Scanner(System.in).nextInt();
-        System.out.print("SSN Field (Vssn): "); Vssn = new Scanner(System.in).nextInt();
-        System.out.print("Number of Record (r): "); record = new Scanner(System.in).nextInt();
-        System.out.print("Zipcode: "); zipCode = new Scanner(System.in).nextInt();
+
+    @Override
+    public String toString() {
+        return "ClusteringIndex{" +
+                "record=" + record +
+                ", blockSize=" + blockSize +
+                ", recordSize=" + recordSize +
+                ", Vssn=" + Vssn +
+                ", blockPointer=" + blockPointer +
+                ", zipCode=" + zipCode +
+                '}';
     }
 }

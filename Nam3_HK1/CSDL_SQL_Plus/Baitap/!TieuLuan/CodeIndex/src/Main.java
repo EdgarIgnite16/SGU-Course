@@ -2,63 +2,43 @@ import Feature.ClusteringIndex;
 import Feature.PrimaryIndex;
 import Feature.SecondaryIndex;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        Matcher check;
-        int select;
-        String temp;
+        int record = 0, blockSize = 0, recordSize = 0, Vssn = 0, blockPointer = 0, zipCode = 0;
+        Scanner file = null;
+        String filename = "importData.txt";
 
-        do {
-            System.out.println("");
-            System.out.println("+---------------------------------------------+");
-            System.out.println("|                    Menu                     |");
-            System.out.println("| --------------------------------------------|");
-            System.out.println("| 1. Primary Index                            |");
-            System.out.println("| 2. Clustering Index                         |");
-            System.out.println("| 3. Secondary Index                          |");
-            System.out.println("| 0. Thoat chuong trinh                       |");
-            System.out.println("+---------------------------------------------+");
+        // Try-catch case: Tìm thấy/Không tìm thấy thư mục
+        try {
+            file = new Scanner(new File(filename));
+        } catch (FileNotFoundException e){
+            System.err.println(filename + " không tìm thấy!");
+            System.exit(1);
+        }
 
-            // Regex
-            do {
-                System.out.print("Nhap vao lua chon: ");
-                temp = new Scanner(System.in).nextLine();
-                String c = "^[0-9]{1}";
-                Pattern b= Pattern.compile(c);
-                check = b.matcher(temp);
+        // Đọc dữ liệu từ file
+        while(file.hasNextLine()) {
+            // Đọc ghi dữ liệu vào biến
+            String[] terms = file.nextLine().split(":");
+            switch (terms[0]) {
+                case "Record_Size_(R)" -> recordSize = Integer.parseInt(terms[1]);
+                case "Block_Size_(B)" -> blockSize = Integer.parseInt(terms[1]);
+                case "Block_Pointer_(P)" -> blockPointer = Integer.parseInt(terms[1]);
+                case "SSN_Field_(Vssn)" -> Vssn = Integer.parseInt(terms[1]);
+                case "Number_of_Record (r)" -> record = Integer.parseInt(terms[1]);
+                case "Zipcode" -> zipCode = Integer.parseInt(terms[1]);
             }
-            while(!check.find());
-            select = Integer.parseInt(temp);
 
-            // Xử lí
-            switch (select) {
-                case 1:
-                    System.out.println("Ban da chon Primary Index!");
-                    new PrimaryIndex().mainProgress();
-                    break;
+        }
+        file.close(); // Đóng file
 
-                case 2:
-                    System.out.println("Ban da chon CLustering Index!");
-                    new ClusteringIndex().mainProgress();
-                    break;
-
-                case 3:
-                    System.out.println("Ban da chon Secondary Index!");
-                    new SecondaryIndex().mainProgress();
-                    break;
-
-                case 0:
-                    System.out.println("Thoat chuong trinh");
-                    break;
-
-                default:
-                    System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
-                    break;
-            }
-        } while(select != 0);
+        // Thực thi cả 3 feature: PrimaryKey, ClusteringKey, SecondaryKey
+        new PrimaryIndex(record, blockSize, recordSize, Vssn, blockPointer).mainProgress();
+        new ClusteringIndex(record, blockSize, recordSize, Vssn, blockPointer, zipCode).mainProgress();
+        new SecondaryIndex(record, blockSize, recordSize, Vssn, blockPointer).mainProgress();
     }
 }
