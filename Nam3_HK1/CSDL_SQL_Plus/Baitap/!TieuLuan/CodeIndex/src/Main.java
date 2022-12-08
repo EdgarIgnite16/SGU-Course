@@ -5,18 +5,25 @@ import Feature.SecondaryIndex;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
 
 public class Main {
     public static void main(String[] args) {
-        int record = 0, blockSize = 0, recordSize = 0, Vssn = 0, blockPointer = 0, zipCode = 0;
+        // Thực thi cả 3 feature: PrimaryKey, ClusteringKey, SecondaryKey
+        readFileTask("Task_1.txt", 1); // PrimaryKey
+        readFileTask("Task_2.txt", 2); // ClusteringKey
+        readFileTask("Task_3.txt", 3); // SecondaryKey
+    }
+
+    private static void readFileTask(String fileName, int task) {
+        float record = 0, blockSize = 0, recordSize = 0, Vssn = 0, blockPointer = 0, zipCode = 0;
         Scanner file = null;
-        String filename = "importData.txt";
 
         // Try-catch case: Tìm thấy/Không tìm thấy thư mục
         try {
-            file = new Scanner(new File(filename));
+            file = new Scanner(new File(fileName));
         } catch (FileNotFoundException e){
-            System.err.println(filename + " không tìm thấy!");
+            System.err.println(fileName + " không tìm thấy!");
             System.exit(1);
         }
 
@@ -32,13 +39,14 @@ public class Main {
                 case "Number_of_Record (r)" -> record = Integer.parseInt(terms[1]);
                 case "Zipcode" -> zipCode = Integer.parseInt(terms[1]);
             }
-
         }
         file.close(); // Đóng file
 
-        // Thực thi cả 3 feature: PrimaryKey, ClusteringKey, SecondaryKey
-        new PrimaryIndex(record, blockSize, recordSize, Vssn, blockPointer).mainProgress();
-        new ClusteringIndex(record, blockSize, recordSize, Vssn, blockPointer, zipCode).mainProgress();
-        new SecondaryIndex(record, blockSize, recordSize, Vssn, blockPointer).mainProgress();
+        // Thực thi chương trình
+        switch (task) {
+            case 1 -> new PrimaryIndex(record, blockSize, recordSize, Vssn, blockPointer).mainProgress();
+            case 2 -> new ClusteringIndex(record, blockSize, recordSize, Vssn, blockPointer, zipCode).mainProgress();
+            case 3 -> new SecondaryIndex(record, blockSize, recordSize, Vssn, blockPointer).mainProgress();
+        }
     }
 }
