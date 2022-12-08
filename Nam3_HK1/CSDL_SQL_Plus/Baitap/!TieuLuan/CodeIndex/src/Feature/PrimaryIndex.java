@@ -24,7 +24,7 @@ public class PrimaryIndex {
         ri = b; // The total number of index entries
         bi = (float) Math.ceil(ri/bfri); // The number of index blocks is hence
         binaraySearchDataFile = (float) Math.ceil(Math.log10(b)/Math.log10(2)); // A binary search on the data file
-        linearSearchDataFile = b/2; // A Linear search on the data file
+        linearSearchDataFile = (float) Math.ceil(b/2); // A Linear search on the data file
         binarySearchIndexFile = (float) Math.ceil(Math.log10(bi)/Math.log10(2)); // A binary search on the index file
         binraySearchWithSupportIndex = binarySearchIndexFile + 1;
 
