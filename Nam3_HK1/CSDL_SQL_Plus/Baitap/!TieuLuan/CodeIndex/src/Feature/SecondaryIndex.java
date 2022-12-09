@@ -19,7 +19,7 @@ public class SecondaryIndex {
         bfr = (float) Math.floor(blockSize/recordSize); //Blocking factor
         b = (float) Math.ceil(record/bfr); // Number of Block needed for the file
         Ri =  Vssn + blockPointer; // The size of each index Entry
-        bfri =  (float) Math.ceil(blockSize/Ri); // The blocking factor for the index
+        bfri =  (float) Math.floor(blockSize/Ri); // The blocking factor for the index
         ri = record; // The total number of index entries
         bi = (float) Math.ceil(ri/bfri); // The number of index blocks is hence
         binaraySearchDataFile = (float) Math.ceil(Math.log10(b)/Math.log10(2)); // A binary search on the data file
