@@ -1,8 +1,5 @@
 package Feature;
 
-import java.util.Scanner;
-
-// nondense
 public class PrimaryIndex {
     private float record, blockSize, recordSize, Vssn, blockPointer; // input value
     private float bfr, b, Ri, bfri, ri, bi, binaraySearchDataFile, binarySearchIndexFile, binraySearchWithSupportIndex, linearSearchDataFile; // output value
@@ -35,16 +32,5 @@ public class PrimaryIndex {
         System.out.printf("4. How many block accesses for a binary search on the data file? Kết quả = %.0f\n", binaraySearchDataFile);
         System.out.printf("5. How many block accesses for a binary search on the index file? Kết quả = %.0f\n", binarySearchIndexFile);
         System.out.printf("6. How many block accesses for a binary search with the support of Primary Index? Kết quả = %.0f\n\n", binraySearchWithSupportIndex);
-    }
-
-    @Override
-    public String toString() {
-        return "PrimaryIndex{" +
-                "record=" + record +
-                ", blockSize=" + blockSize +
-                ", recordSize=" + recordSize +
-                ", Vssn=" + Vssn +
-                ", blockPointer=" + blockPointer +
-                '}';
     }
 }
