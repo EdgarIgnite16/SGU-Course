@@ -35,7 +35,7 @@ INSTEAD OF INSERT
 AS
 	BEGIN
 		DECLARE @MaKhoa VARCHAR(20), @TuoiSinhVien SMALLINT, @MaSV VARCHAR(20), @TenSV VARCHAR(20)
-		DECLARE @HoSV VARCHAR(20), @GioiTinh SMALLINT, @Dia_Chi NVARCHAR(50), @NgaySinh DATETIME, @HocBong BOOLEAN
+		DECLARE @HoSV VARCHAR(20), @GioiTinh SMALLINT, @DiaChi NVARCHAR(50), @NgaySinh DATETIME, @HocBong BOOLEAN
 
 		SELECT @MaSV = Ma_Sinh_Vien FROM inserted
 		SELECT @HoSV = Ho_Sinh_Vien FROM inserted
@@ -66,6 +66,6 @@ AS
 		
 		PRINT N'Nhập dữ liệu thành công'
 		INSERT dbo.SINH_VIEN(Ma_Sinh_Vien, Ho_Sinh_Vien, Ten_Sinh_Vien, Ngay_Sinh, Gioi_Tinh, Dia_Chi, Hoc_bong, Ma_Khoa)
-		VALUES (@MaGV, @HoSV, @TenSV, @NgaySinh, @GioiTinh, @DiaChi, @HocBong, @MaKhoa)
+		VALUES (@MaSV, @HoSV, @TenSV, @NgaySinh, @GioiTinh, @DiaChi, @HocBong, @MaKhoa)
 	END
 GO
