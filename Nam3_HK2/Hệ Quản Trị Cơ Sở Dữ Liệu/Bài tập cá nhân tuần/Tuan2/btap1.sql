@@ -5,11 +5,14 @@ AS
 	BEGIN
 		DECLARE @MaKhoa VARCHAR(30), @TuoiSinhVien SMALLINT
 
+		-- Lấy thông tin mã khoa và tính tuổi sinh viên được nhập vào
 		SELECT @MaKhoa = Ma_khoa FROM inserted
 		SELECT @TuoiSinhVien = YEAR(GETDATE()) - YEAR(NG_SINH) FROM inserted
 
+		-- Kiểm tra mã khoa được nhập có tồn tại hay không
 		IF(EXISTS(SELECT * FROM KHOA WHERE Ma_Khoa = @MaKhoa)) 
 			BEGIN
+				-- Kiểm tra tuổi sinh viên phải lớn hơn 18
 				IF(@TuoiSinhVien >= 18) 
 					BEGIN
 						PRINT N'Nhập dữ liệu thành công!'
@@ -37,6 +40,7 @@ AS
 		DECLARE @MaKhoa VARCHAR(20), @TuoiSinhVien SMALLINT, @MaSV VARCHAR(20), @TenSV VARCHAR(20)
 		DECLARE @HoSV VARCHAR(20), @GioiTinh SMALLINT, @DiaChi NVARCHAR(50), @NgaySinh DATETIME, @HocBong BOOLEAN
 
+		-- Lấy tất cả thông tin của sinh viên được nhập vào 
 		SELECT @MaSV = Ma_Sinh_Vien FROM inserted
 		SELECT @HoSV = Ho_Sinh_Vien FROM inserted
 		SELECT @TenSV = Ten_Sinh_Vien FROM inserted
@@ -47,6 +51,7 @@ AS
 		SELECT @MaKhoa = Ma_khoa FROM inserted
 		SELECT @TuoiSinhVien = YEAR(GETDATE()) - YEAR(NG_SINH) FROM inserted
 
+		-- Kiểm tra mã khoa được nhập có tồn tại hay không
 		IF (NOT EXISTS(SELECT * FROM KHOA WHERE Ma_Khoa = @MaKhoa))
 			BEGIN
 				ROLLBACK TRANSACTION
@@ -55,6 +60,7 @@ AS
 				RETURN --End
 			END
 
+		-- Kiểm tra tuổi sinh viên phải lớn hơn 18
 		IF (@TuoiSinhVien < 18)
 			BEGIN
 				ROLLBACK TRANSACTION
@@ -63,8 +69,10 @@ AS
 				RETURN
 			END
 		
-		
+		-- Xác nhận thay đổi thành công
 		PRINT N'Nhập dữ liệu thành công'
+		
+		-- Thực hiện câu lệnh INSERT để thực hiện truy vấn thêm mới sinh viên 
 		INSERT dbo.SINH_VIEN(Ma_Sinh_Vien, Ho_Sinh_Vien, Ten_Sinh_Vien, Ngay_Sinh, Gioi_Tinh, Dia_Chi, Hoc_bong, Ma_Khoa)
 		VALUES (@MaSV, @HoSV, @TenSV, @NgaySinh, @GioiTinh, @DiaChi, @HocBong, @MaKhoa)
 	END
