@@ -1,3 +1,0 @@
-- Thực thể hay còn gọi là "Lược đồ quan hệ"
-- Xác định tính duy nhất của một bộ bằng: Khoá, Siêu khóa
-- Đựa vào phụ thuộc hàm để xác định thuộc tính của một tt
