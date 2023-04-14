@@ -1,0 +1,12 @@
+Thuật toán cần phải học:
+- Thuật toán người bán hàng (GTS1-GTS2)
+- Thuật toán tô màu đồ thị
+- Thuật toán cho bài toán
+	+ Bài toán phân việc cho các người thợ (Assignment)
+	+ Bài toán phân việc cho các máy đồng nhất (Johnson)
+	+ Bài toán lập lịch (Schedule)
+- Thuật toán tìm đoạn thẳng ngắn nhất
+- Bài toán lập lịch tìm số công việc trễ hạn ít nhất
+- Bài toán tháp hà nội
+- Thuật toán Akt
+- Thuật toán A* 
