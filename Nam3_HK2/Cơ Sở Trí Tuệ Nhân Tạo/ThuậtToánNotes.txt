@@ -10,3 +10,30 @@ Thuật toán cần phải học:
 - Bài toán tháp hà nội
 - Thuật toán Akt
 - Thuật toán A* 
+
+===============================================================================
+- Chương 1
+	+ Logic mệnh đề: chân trị, tương đương, phản chứng
+- Chương 2
+	+ Thuật toán người bán hàng TSP: Thuật toán GTS1, GTS2
+	+ Thuật toán tô màu: Thuật toán Welch-Powell
+	+ Bài toán phân việc
+	+ Bài toán phân việc máy đồng nhất
+	+ Bài toán gia công trên 2 máy: Thuật toán Johnson
+	+ Bài toán tìm các đoạn thẳng không giao nhau: Gready 1, 2, 3
+	+ Thuật toán duyệt đồ thị: Tìm kiếm theo chiều rộng BFS, Tìm kiếm theo chiều sâu DFS
+	+ Thuật toán Akt (Giải bài toán TACI, Tháp Hà Nội)
+	+ Thuật toán A*
+- Chương 3
+	+ Thuật toán Vương Hạo
+	+ Thuật toán Robinsons
+	+ Suy diễn tiến, Suy diễn lùi (Trò chơi đong nước)
+- Chương 4
+	+ Bài toán phân lớp: Thuật toán Quinlan, ILA, ID3
+	+ Bài toán gom cụm dữ liệu: Thuận toán K-Means
+- Chương 5: Metaheuristic
+	+ Thuật toán Local-Search: TSP
+	+ Thuật toán VNS: TSP
+	+ Thuật toán Tabu
+	+ Thuật toán di truyền (Genetic Algorthm - GA): TSP
+	+ Thuật toán BEE: TSPD
