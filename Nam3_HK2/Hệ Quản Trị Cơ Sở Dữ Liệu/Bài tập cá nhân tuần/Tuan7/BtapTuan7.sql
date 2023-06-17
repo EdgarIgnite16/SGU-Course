@@ -7,14 +7,18 @@ AS
         IF(EXISTS(SELECT * FROM CHUYENDI cd, XE x WHERE cd.MCD = @macd OR x.MAXE = @maxe))
             BEGIN
                 -- Nếu trong ngày tương ứng không tồn tại chuyến đi nào cho xe đang xét
-                IF(NOT EXISTS(SELECT * FROM CHYENDI cd, CD_XE cdx, Xe x 
-                    WHERE x.MAXE = @maxe
-                    AND x.MAXE = cdx.MAXE 
-                    AND cdx.MACD = cd.MACD
-                    AND cd.MACD = @macd
-                    AND DATE(cd.NGAYDI) = DATE(GETDATE())
-                    AND MONTH(cd.NGAYDI) = MONTH(GETDATE())
-                    AND YEAR(cd.NGAYDI) = YEAR(GETDATE())
+                -- Bước 1 lấy ra danh sách chuyến đi trong ngày tương ứng (ví dụ là ngày môn nay)
+                -- Sau bước 1 thì ta sẽ có danh sách mã xe trong ngày tương ứng
+                -- Lấy danh sách đó so sánh với mã xe hiện tại đang xét 
+                IF(EXISTS(
+                    SELECT * FROM XE x
+                    WHERE x.MAXE = @maxe AND x.MAXE NOT IN (
+                        SELECT cdx.MAXE FROM CHUYENDI cd, CD_XE cdx
+                        WHERE cd.MACD = cdx.MACD
+                            AND DAY(cd.NGAYDI) = DAY(GETDATE())
+                            AND MONTH(cd.NGAYDI) = MONTH(GETDATE())
+                            AND YEAR(cd.NGAYDI) = YEAR(GETDATE())
+                    )
                 ))
                     BEGIN
                         INSERT INTO CD_XE
