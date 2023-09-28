@@ -1,0 +1,6 @@
+- Đề tài của em là đề tài 8: Công nghệ
+	+ Business operations survey 2022: information and communications technology: 
+	file CSV ghi lại dữ liệu kinh doanh hoạt động khảo sát doanh nghiệp trong Công nghệ thông tin và truyền thông trong năm 2022
+
+	+ Environmental tax account 1999-2021 (chọn file CSV ở đề tài 7 vì không thể tìm thêm file CSV về đề tài công nghệ):
+	file CSV ghi lại dữ liệu về thuế môi trường trong khoảng năm 1999-2021
