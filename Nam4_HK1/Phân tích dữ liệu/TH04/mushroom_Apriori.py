@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from mlxtend.preprocessing import TransactionEncoder 
-from mlxtend.frequent_patterns import apriori, association_rules
+from mlxtend.frequent_patterns import apriori
 
 # Chuyển file .dat thành mảng 2 chiều
 dataset = np.array 
