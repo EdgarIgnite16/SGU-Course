@@ -14,9 +14,9 @@ te_ary = te.fit(dataset).transform(dataset)
 df = pd.DataFrame(te_ary, columns=te.columns_)
 
 # Trường hợp 1: Cố định minsup và minconf thay đổi
-# minsup = 0.8
-# minconf = 0.95, 0.9, 0.85, 0.8, 0.75
-listMinconf = [0.95, 0.9, 0.85, 0.8, 0.75]
+# minsup = 0.3
+# minconf = 0.35, 0.3, 0.25, 0.2, 0.15
+listMinconf = [0.35, 0.3, 0.25, 0.2, 0.15]
 listTimeCost1 = [0]
 listMemoCost1 = [0]
 listTimeCost2 = []
@@ -24,7 +24,7 @@ listMemoCost2 = []
 
 # Lấy tập phổ biến
 start_time = time.time()  # Bắt đầu tính thời gian thuật toán sinh tập phố biến
-frequent_itemsets = apriori(df, min_support=0.8, use_colnames=True)
+frequent_itemsets = apriori(df, min_support=0.3, use_colnames=True)
 frequent_itemsets = frequent_itemsets.sort_values(by='support') # sắp xếp tập phổ biến
 end_time = time.time()  # Kết thúc thời điểm thuật toán dừng
 
@@ -33,7 +33,7 @@ timecost = end_time - start_time
 memocost = psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2
 listMemoCost1.append(memocost)
 listTimeCost1.append(timecost)
-print("Với minsup= 0.8")
+print("Với minsup= 0.2")
 print("Thời gian thực hiện sinh tập kết hợp: {0}".format(timecost) + "s")
 print("Bộ nhớ tiêu thụ  sinh tập kết hợp: {0}".format(memocost) + "MB")
 print(frequent_itemsets) # In ra tập phổ biến

@@ -14,9 +14,9 @@ te_ary = te.fit(dataset).transform(dataset)
 df = pd.DataFrame(te_ary, columns=te.columns_)
 
 # Trường hợp 1: Cố định minconf và minsup thay đổi
-# minconf = 0.75
-# minssup = 0.9, 0.85, 0.8, 0.75, 0.7
-listMinsup = [0.9, 0.85, 0.8, 0.75, 0.7]
+# minconf = 0.35
+# minssup = 0.5, 0.4, 0.35, 0.3, 0.25
+listMinsup = [0.5, 0.4, 0.35, 0.3, 0.25]
 listTimeCost1 = [0]
 listMemoCost1 = [0]
 listTimeCost2 = []
@@ -45,7 +45,7 @@ for val in listMinsup:
     # ============================================================== #
     # Tính luật kết hợp
     start_time = time.time()  # Bắt đầu tính thời gian thuật toán sinh luật kết hợp
-    rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.75)
+    rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.35)
     end_time = time.time()  # Kết thúc thời điểm thuật toán dừng
 
     # Tính thời gian chạy và thiêu thụ bộ nhớ của thuật toán sinh tập kết hợp

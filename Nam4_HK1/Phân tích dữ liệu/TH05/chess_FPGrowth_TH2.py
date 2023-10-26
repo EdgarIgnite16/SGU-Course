@@ -14,7 +14,7 @@ te_ary = te.fit(dataset).transform(dataset)
 df = pd.DataFrame(te_ary, columns=te.columns_)
 
 # Trường hợp 1: Cố định minconf và minsup thay đổi
-# minconf = 0.7
+# minconf = 0.75
 # minssup = 0.9, 0.85, 0.8, 0.75, 0.7
 listMinsup = [0.9, 0.85, 0.8, 0.75, 0.7]
 listTimeCost1 = [0]
